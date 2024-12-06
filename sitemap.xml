@@ -1,19 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://TylerNguyen25.github.io/Stats140XP-TylerNguyen/posts/welcome/index.html</loc>
-    <lastmod>2024-11-22T06:14:45.465Z</lastmod>
+    <loc>https://TylerNguyen25.github.io/Stats140XP-TylerNguyen/posts/Visualization plotly/climate.html</loc>
+    <lastmod>2024-02-04T06:04:53.653Z</lastmod>
+  </url>
+  <url>
+    <loc>https://TylerNguyen25.github.io/Stats140XP-TylerNguyen/posts/image classification/ClassificationDogCat (1).html</loc>
+    <lastmod>2024-03-01T03:53:10.307Z</lastmod>
   </url>
   <url>
     <loc>https://TylerNguyen25.github.io/Stats140XP-TylerNguyen/index.html</loc>
-    <lastmod>2024-11-22T06:14:45.463Z</lastmod>
+    <lastmod>2024-11-22T06:51:00.662Z</lastmod>
   </url>
   <url>
     <loc>https://TylerNguyen25.github.io/Stats140XP-TylerNguyen/about.html</loc>
-    <lastmod>2024-11-22T06:14:45.469Z</lastmod>
+    <lastmod>2024-11-22T06:55:15.548Z</lastmod>
   </url>
   <url>
-    <loc>https://TylerNguyen25.github.io/Stats140XP-TylerNguyen/posts/post-with-code/index.html</loc>
-    <lastmod>2024-11-22T06:14:45.468Z</lastmod>
+    <loc>https://TylerNguyen25.github.io/Stats140XP-TylerNguyen/posts/flask/Flask Tutorial.html</loc>
+    <lastmod>2024-02-11T00:22:36.396Z</lastmod>
+  </url>
+  <url>
+    <loc>https://TylerNguyen25.github.io/Stats140XP-TylerNguyen/posts/TMDB_scraper/TMDB.html</loc>
+    <lastmod>2024-02-02T21:29:04.716Z</lastmod>
   </url>
 </urlset>

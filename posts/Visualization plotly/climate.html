@@ -1,0 +1,1187 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.4.538">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Tyler Nguyen">
+<meta name="dcterms.date" content="2024-01-23">
+
+<title>Projects - Using Geographic, Boxplot, and Lineplot Visualizations to illustrate Global Warming</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script><script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
+
+<script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
+
+
+<link rel="stylesheet" href="../../styles.css">
+</head>
+
+<body class="nav-fixed fullcontent">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top quarto-banner">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">Projects</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../about.html"> 
+<span class="menu-text">Tyler Nguyen</span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+          <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<header id="title-block-header" class="quarto-title-block default page-columns page-full">
+  <div class="quarto-title-banner page-columns page-full">
+    <div class="quarto-title column-body">
+      <h1 class="title">Using Geographic, Boxplot, and Lineplot Visualizations to illustrate Global Warming</h1>
+                                <div class="quarto-categories">
+                <div class="quarto-category">SQLITE</div>
+                <div class="quarto-category">Visualization</div>
+              </div>
+                  </div>
+  </div>
+    
+  
+  <div class="quarto-title-meta">
+
+      <div>
+      <div class="quarto-title-meta-heading">Author</div>
+      <div class="quarto-title-meta-contents">
+               <p>Tyler Nguyen </p>
+            </div>
+    </div>
+      
+      <div>
+      <div class="quarto-title-meta-heading">Published</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date">January 23, 2024</p>
+      </div>
+    </div>
+    
+      
+    </div>
+    
+  
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    
+<!-- main -->
+<main class="content quarto-banner-title-block" id="quarto-document-content">
+
+
+
+
+
+<div id="66d67274" class="cell" data-execution_count="1">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> sqlite3</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> matplotlib <span class="im">import</span> pyplot <span class="im">as</span> plt</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.linear_model <span class="im">import</span> LinearRegression</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> plotly <span class="im">import</span> express <span class="im">as</span> px</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> plotly.io <span class="im">as</span> pio</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> inspect</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>pio.renderers.default<span class="op">=</span><span class="st">"iframe"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="d8846407" class="cell" data-execution_count="3">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> climate_database <span class="im">import</span> (query_climate_database, temperature_coefficient_plot,</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>query_equator, temperature_box_plot, temperature_lineplot_equator)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<section id="database-creation" class="level1">
+<h1>1. Database Creation</h1>
+<p>First, create three separate tables: temperatures, countries, and stations table. To do so, I wrote a function named prepare_df to prepare the temperature dataset such that the data is easier to understand.</p>
+<ul>
+<li>The temperatures table will contain station ID, year of measurement, month of measurement, and average temperature.</li>
+<li>The countries table will contain country names and their corresponding country codes.</li>
+<li>The stations table will contain station ID, latitude, longitude, elevation, and the name of the station.</li>
+</ul>
+<div id="b145fad6" class="cell" data-execution_count="14">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> prepare_df(df):</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>    df <span class="op">=</span> df.set_index(keys<span class="op">=</span>[<span class="st">"ID"</span>, <span class="st">"Year"</span>])</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>    df <span class="op">=</span> df.stack()</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>    df <span class="op">=</span> df.reset_index()</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>    df <span class="op">=</span> df.rename(columns <span class="op">=</span> {<span class="st">"level_2"</span>  : <span class="st">"Month"</span> , <span class="dv">0</span> : <span class="st">"Temp"</span>})</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>    df[<span class="st">"Month"</span>] <span class="op">=</span> df[<span class="st">"Month"</span>].<span class="bu">str</span>[<span class="dv">5</span>:].astype(<span class="bu">int</span>)</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>    df[<span class="st">"Temp"</span>]  <span class="op">=</span> df[<span class="st">"Temp"</span>] <span class="op">/</span> <span class="dv">100</span></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>    df[<span class="st">"NewID"</span>] <span class="op">=</span> df[<span class="st">"ID"</span>].<span class="bu">str</span>[<span class="dv">0</span>:<span class="dv">2</span>]</span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span>(df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="07eb15f5" class="cell" data-execution_count="36">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> sqlite3.<span class="ex">connect</span>(<span class="st">"HW1.db"</span>) <span class="im">as</span> conn: <span class="co"># create a database in current directory called temps.db</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>    df_iter <span class="op">=</span> pd.read_csv(<span class="st">"temps.csv"</span>, chunksize <span class="op">=</span> <span class="dv">100000</span>)</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> i, df <span class="kw">in</span> <span class="bu">enumerate</span>(df_iter):</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>        df <span class="op">=</span> prepare_df(df)</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>        df.to_sql(<span class="st">"temperatures"</span>, conn, if_exists <span class="op">=</span> <span class="st">"replace"</span> <span class="cf">if</span> i <span class="op">==</span> <span class="dv">0</span> <span class="cf">else</span> <span class="st">"append"</span>, index <span class="op">=</span> <span class="va">False</span>)</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>    url <span class="op">=</span> <span class="st">"station-metadata.csv"</span></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>    stations <span class="op">=</span> pd.read_csv(url)</span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>    stations[<span class="st">"NewID"</span>] <span class="op">=</span> stations[<span class="st">"ID"</span>].<span class="bu">str</span>[<span class="dv">0</span>:<span class="dv">2</span>]</span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>    stations.to_sql(<span class="st">"stations"</span>, conn, if_exists <span class="op">=</span> <span class="st">"replace"</span>, index<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>    countries <span class="op">=</span> pd.read_csv(<span class="st">"countries.csv"</span>)</span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>    countries <span class="op">=</span> countries.rename(columns<span class="op">=</span>{<span class="st">"FIPS 10-4"</span>: <span class="st">"NewID"</span>})</span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>    countries.to_sql(<span class="st">"countries"</span>, conn, if_exists <span class="op">=</span> <span class="st">"replace"</span>, index<span class="op">=</span><span class="va">False</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Temperatures dataframe</p>
+<div id="2d7ed429" class="cell" data-execution_count="35">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>df.head() </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="35">
+<div>
+
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">ID</th>
+<th data-quarto-table-cell-role="th">Year</th>
+<th data-quarto-table-cell-role="th">Month</th>
+<th data-quarto-table-cell-role="th">Temp</th>
+<th data-quarto-table-cell-role="th">NewID</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>USW00014924</td>
+<td>2016</td>
+<td>1</td>
+<td>-13.69</td>
+<td>US</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>USW00014924</td>
+<td>2016</td>
+<td>2</td>
+<td>-8.40</td>
+<td>US</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>USW00014924</td>
+<td>2016</td>
+<td>3</td>
+<td>-0.20</td>
+<td>US</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3</td>
+<td>USW00014924</td>
+<td>2016</td>
+<td>4</td>
+<td>3.21</td>
+<td>US</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4</td>
+<td>USW00014924</td>
+<td>2016</td>
+<td>5</td>
+<td>13.85</td>
+<td>US</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<p>Stations dataframe</p>
+<div id="34b56338" class="cell" data-execution_count="6">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>stations.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="6">
+<div>
+
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">ID</th>
+<th data-quarto-table-cell-role="th">LATITUDE</th>
+<th data-quarto-table-cell-role="th">LONGITUDE</th>
+<th data-quarto-table-cell-role="th">STNELEV</th>
+<th data-quarto-table-cell-role="th">NAME</th>
+<th data-quarto-table-cell-role="th">NewID</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>ACW00011604</td>
+<td>57.7667</td>
+<td>11.8667</td>
+<td>18.0</td>
+<td>SAVE</td>
+<td>AC</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>AE000041196</td>
+<td>25.3330</td>
+<td>55.5170</td>
+<td>34.0</td>
+<td>SHARJAH_INTER_AIRP</td>
+<td>AE</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>AEM00041184</td>
+<td>25.6170</td>
+<td>55.9330</td>
+<td>31.0</td>
+<td>RAS_AL_KHAIMAH_INTE</td>
+<td>AE</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3</td>
+<td>AEM00041194</td>
+<td>25.2550</td>
+<td>55.3640</td>
+<td>10.4</td>
+<td>DUBAI_INTL</td>
+<td>AE</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4</td>
+<td>AEM00041216</td>
+<td>24.4300</td>
+<td>54.4700</td>
+<td>3.0</td>
+<td>ABU_DHABI_BATEEN_AIR</td>
+<td>AE</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<p>Countries dataframe</p>
+<div id="cf4a3fa4" class="cell" data-execution_count="7">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>countries.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="7">
+<div>
+
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">NewID</th>
+<th data-quarto-table-cell-role="th">ISO 3166</th>
+<th data-quarto-table-cell-role="th">Name</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>AF</td>
+<td>AF</td>
+<td>Afghanistan</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>AX</td>
+<td>-</td>
+<td>Akrotiri</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>AL</td>
+<td>AL</td>
+<td>Albania</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3</td>
+<td>AG</td>
+<td>DZ</td>
+<td>Algeria</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4</td>
+<td>AQ</td>
+<td>AS</td>
+<td>American Samoa</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<div id="67245256" class="cell" data-execution_count="8">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>db_file <span class="op">=</span> <span class="st">"HW1.db"</span> <span class="co">#database we created </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="query-function" class="level1">
+<h1>2. Query Function</h1>
+<p>Below I created a query function <code>query_climate_database</code> which returns a dataframe based off of filters. The parameters specify the country, the year we start from, the year we end at, and the month we wish to analyze. The dataframe displays station name, latitude, longitude, and average temperature of the station during the month and year.</p>
+<div id="263589a6" class="cell" data-execution_count="4">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>inspect.getsource(query_climate_database)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="4">
+<pre><code>'def query_climate_database(db_file, country, year_begin, year_end, month):\n    """\n    Query function to filter climate data \n    \n    Args:\n    country: country of interest \n    year_begin: start year desired \n    year_end: end year desired \n    month: a specific month \n    \n    Return:\n    Dataframe of filtered data \n    """\n    with sqlite3.connect(db_file) as conn:\n        #select Name, Latitiude, and Longitude from stations table\n        #select country from countries table,\n        #select Year, Month, and Temperature from temperatures table\n        cmd = f"""\n        SELECT S.Name, S.LATITUDE, S.LONGITUDE, C.Name "Country", T.Year, T.Month, T.Temp\n        FROM stations S \n        LEFT JOIN countries C ON C.NewID = S.NewID\n        RIGHT JOIN temperatures T ON S.ID = T.ID \n        WHERE T.Year &lt;= {year_end} AND T.Year &gt;= {year_begin} AND T.Month = {month} AND C.Name = "{country}"\n        """\n        #Combine tables on ID number and subset where the year is between year_end and year_begin, \n        #subset where the month and country are provided parameters\n        df = pd.read_sql_query(cmd, conn)\n        return(df)\n'</code></pre>
+</div>
+</div>
+<p>Below is an example with parameters country <code>India</code>, year_begin <code>1980</code>, year_end <code>2020</code>, and month <code>1</code></p>
+<div id="724810c6" class="cell" data-execution_count="5">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> query_climate_database(db_file <span class="op">=</span> <span class="st">"HW1.db"</span>, </span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>                            country <span class="op">=</span> <span class="st">"India"</span>,</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>                            year_begin <span class="op">=</span> <span class="dv">1980</span>, </span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>                            year_end <span class="op">=</span> <span class="dv">2020</span>, </span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>                            month <span class="op">=</span> <span class="dv">1</span>)</span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="5">
+<div>
+
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">NAME</th>
+<th data-quarto-table-cell-role="th">LATITUDE</th>
+<th data-quarto-table-cell-role="th">LONGITUDE</th>
+<th data-quarto-table-cell-role="th">Country</th>
+<th data-quarto-table-cell-role="th">Year</th>
+<th data-quarto-table-cell-role="th">Month</th>
+<th data-quarto-table-cell-role="th">Temp</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>PBO_ANANTAPUR</td>
+<td>14.583</td>
+<td>77.633</td>
+<td>India</td>
+<td>1980</td>
+<td>1</td>
+<td>23.48</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>PBO_ANANTAPUR</td>
+<td>14.583</td>
+<td>77.633</td>
+<td>India</td>
+<td>1981</td>
+<td>1</td>
+<td>24.57</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>PBO_ANANTAPUR</td>
+<td>14.583</td>
+<td>77.633</td>
+<td>India</td>
+<td>1982</td>
+<td>1</td>
+<td>24.19</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3</td>
+<td>PBO_ANANTAPUR</td>
+<td>14.583</td>
+<td>77.633</td>
+<td>India</td>
+<td>1983</td>
+<td>1</td>
+<td>23.51</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4</td>
+<td>PBO_ANANTAPUR</td>
+<td>14.583</td>
+<td>77.633</td>
+<td>India</td>
+<td>1984</td>
+<td>1</td>
+<td>24.81</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">3147</td>
+<td>DARJEELING</td>
+<td>27.050</td>
+<td>88.270</td>
+<td>India</td>
+<td>1983</td>
+<td>1</td>
+<td>5.10</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3148</td>
+<td>DARJEELING</td>
+<td>27.050</td>
+<td>88.270</td>
+<td>India</td>
+<td>1986</td>
+<td>1</td>
+<td>6.90</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">3149</td>
+<td>DARJEELING</td>
+<td>27.050</td>
+<td>88.270</td>
+<td>India</td>
+<td>1994</td>
+<td>1</td>
+<td>8.10</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3150</td>
+<td>DARJEELING</td>
+<td>27.050</td>
+<td>88.270</td>
+<td>India</td>
+<td>1995</td>
+<td>1</td>
+<td>5.60</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">3151</td>
+<td>DARJEELING</td>
+<td>27.050</td>
+<td>88.270</td>
+<td>India</td>
+<td>1997</td>
+<td>1</td>
+<td>5.70</td>
+</tr>
+</tbody>
+</table>
+
+<p>3152 rows × 7 columns</p>
+</div>
+</div>
+</div>
+</section>
+<section id="geographic-mapbox-scatterplot" class="level1">
+<h1>3. Geographic Mapbox Scatterplot</h1>
+<p>We use <code>query_climate_database</code> to create another function <code>temperature_coefficient plot</code> which answers how the average yearly change in temperature varies within a country. The function accepts the same parameters, as well as <code>min_obs</code> which will filters stations which do not have the specified number of data points. We also add <code>**kwargs</code> to customize our mapbox scatterplot we made using <code>px.scatter_mapbox()</code>.</p>
+<p>Inside our function, I wrote another function <code>coef</code> which conducts linear regression in order to compute how each station changes in average temperature over time.</p>
+<p>Below we create a sample plot with the same parameters we used in the query function along with new <code>**kwargs</code> parameters for the scatter_mapbox.</p>
+<div id="18eed56e" class="cell" data-execution_count="6">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>inspect.getsource(temperature_coefficient_plot)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="6">
+<pre><code>'def temperature_coefficient_plot(db_file, country, year_begin, year_end, month, min_obs, **kwargs):\n    """\n    Construct a geographic mapbox scatterplot of yearly temperature increase\n    \n    Args:\n    country: desired country to display \n    year_begin: desired start year \n    year_end: desired end year \n    month: a specific month \n    min_obs: minimum required observations of station\n    **kwargs: additional keyword arguments\n    \n    Return:\n    Scatter_mapbox plot\n    """\n    import calendar \n    #get the average increase through taking the coefficient of linear regression \n    def coef(data_group):\n        x = data_group[["Year"]] # 2 brackets because X should be a df\n        y = data_group["Temp"]   # 1 bracket because y should be a series\n        LR = LinearRegression()\n        LR.fit(x, y)\n        return LR.coef_[0]\n    #call the query function we created above \n    df = query_climate_database(db_file, country, year_begin, year_end, month)\n    #get the amount of observations per station\n    test = df.groupby(["NAME"]).size()\n    #index our dataframe such that the ones with more than min obs are kept\n    names = test[test &gt;= min_obs].index\n    df = df[df.NAME.isin(names)]\n    #get the coefficients for each station during said month\n    coefs = df.groupby(["NAME", "Month"]).apply(coef).round(4)\n    plot_df = pd.DataFrame(coefs)\n    #merge coefficients with dataframe above\n    merged_df = pd.merge(df, plot_df, on=\'NAME\')\n    merged_df = merged_df.rename(columns={0: "Estimated Yearly Increase (Celcius)"})\n    #create a scatter_mapbox given coordinate points and hover over station name with the color equal to the coefficient increase\n    fig = px.scatter_mapbox(merged_df, \n                            lat = "LATITUDE",\n                            lon = "LONGITUDE", \n                            hover_name="NAME", \n                            color_continuous_midpoint = 0,\n                            color = "Estimated Yearly Increase (Celcius)",\n                            title = (f"""Estimates of yearly increase in {calendar.month_name[month]} \n                             &lt;br&gt;temperature for stations in {country}, from {year_begin} to {year_end}"""),\n                            **kwargs)\n    return(fig)\n'</code></pre>
+</div>
+</div>
+<div id="f8c4777f" class="cell" data-execution_count="9">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>color_map <span class="op">=</span> px.colors.diverging.RdGy_r</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>fig <span class="op">=</span> temperature_coefficient_plot(db_file, <span class="st">"India"</span>, <span class="dv">1980</span>, <span class="dv">2020</span>, <span class="dv">1</span>, <span class="dv">10</span>,</span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>                                   zoom <span class="op">=</span> <span class="dv">2</span>,</span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>                                   mapbox_style<span class="op">=</span><span class="st">"carto-positron"</span>,</span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>                                   color_continuous_scale <span class="op">=</span> color_map)</span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>fig.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<iframe scrolling="no" width="100%" height="545px" src="iframe_figures/figure_9.html" frameborder="0" allowfullscreen=""></iframe>
+</div>
+</div>
+<p>Now let us try this with a new example. Here I used the parameters country = <code>Portugal</code>, year_begin = <code>1980</code>, year_end = <code>2020</code>, and month = <code>2</code>.</p>
+<div id="04f6933a" class="cell" data-execution_count="10">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>fig <span class="op">=</span> temperature_coefficient_plot(db_file, <span class="st">"Portugal"</span>, <span class="dv">1980</span>, <span class="dv">2020</span>, <span class="dv">2</span>, </span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>                                   min_obs <span class="op">=</span> <span class="dv">10</span>,</span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>                                   zoom <span class="op">=</span> <span class="dv">2</span>,</span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>                                   mapbox_style<span class="op">=</span><span class="st">"carto-positron"</span>,</span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>                                   color_continuous_scale<span class="op">=</span>color_map)</span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a>fig.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<iframe scrolling="no" width="100%" height="545px" src="iframe_figures/figure_10.html" frameborder="0" allowfullscreen=""></iframe>
+</div>
+</div>
+</section>
+<section id="additional-query-function-and-plotly-boxplot-and-lineplot" class="level1">
+<h1>4. Additional Query Function and Plotly Boxplot and Lineplot</h1>
+<p>I decided to write a query function which filters out only the equator countries. The reason why I did this was because I believe that it is valuable to see how the temperature changes each year from these equator countries because it may illustrate that even at the hottest parts of our world, the temperature increases, potentially infering global warming.</p>
+<p>Here I created a dataframe of just equator countries from 2010 - 2020.</p>
+<div id="4954b5e1" class="cell" data-execution_count="11">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>inspect.getsource(query_equator)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="11">
+<pre><code>'def query_equator(db_file, year_begin, year_end):\n    """\n    Query function of only the Equator countries\n    \n    Args:\n    country: desired country to display \n    year_begin: desired start year \n    year_end: desired end year\n    \n    Return:\n    Dataframe with desired filters \n    """\n    with sqlite3.connect(db_file) as conn:\n        #subset between year_begin and year_end and only the countries which lie on the equator \n        cmd = \\\n        f"""\n        SELECT S.Name, S.LATITUDE, S.LONGITUDE, C.Name "Country", T.Year, T.Month, T.Temp\n        FROM stations S \n        LEFT JOIN countries C ON C.NewID = S.NewID\n        RIGHT JOIN temperatures T ON S.ID = T.ID \n        WHERE T.Year &lt;= {year_end} AND T.Year &gt;= {year_begin} AND S.LATITUDE &gt;= -5 AND S.LATITUDE &lt;= 5\n        AND (C.Name = "Congo, Democratic Republic of the" OR C.Name = "Gabon" \n        OR C.Name = "Somalia" \n        OR C.Name = "Congo, Republic of the" OR C.Name = "Uganda" \n        OR C.Name = "Maldives" OR C.Name = "Indonesia" OR C.Name = "Kiribati" \n        OR C.Name = "Sao Tome and Principe" OR C.Name = "Kenya" \n        OR C.Name = "Ecuador" OR C.Name = "Colombia" OR C.Name = "Brazil")\n        """ \n        df = pd.read_sql_query(cmd, conn)\n        return(df)\n'</code></pre>
+</div>
+</div>
+<div id="ec2e72af" class="cell" data-execution_count="12">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> query_equator(db_file, <span class="dv">2010</span>, <span class="dv">2020</span>)</span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="12">
+<div>
+
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">NAME</th>
+<th data-quarto-table-cell-role="th">LATITUDE</th>
+<th data-quarto-table-cell-role="th">LONGITUDE</th>
+<th data-quarto-table-cell-role="th">Country</th>
+<th data-quarto-table-cell-role="th">Year</th>
+<th data-quarto-table-cell-role="th">Month</th>
+<th data-quarto-table-cell-role="th">Temp</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>PORTO_DE_MOZ</td>
+<td>-1.733</td>
+<td>-52.233</td>
+<td>Brazil</td>
+<td>2010</td>
+<td>1</td>
+<td>27.69</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>PORTO_DE_MOZ</td>
+<td>-1.733</td>
+<td>-52.233</td>
+<td>Brazil</td>
+<td>2010</td>
+<td>2</td>
+<td>28.11</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>PORTO_DE_MOZ</td>
+<td>-1.733</td>
+<td>-52.233</td>
+<td>Brazil</td>
+<td>2010</td>
+<td>3</td>
+<td>28.85</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3</td>
+<td>PORTO_DE_MOZ</td>
+<td>-1.733</td>
+<td>-52.233</td>
+<td>Brazil</td>
+<td>2010</td>
+<td>4</td>
+<td>27.79</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4</td>
+<td>PORTO_DE_MOZ</td>
+<td>-1.733</td>
+<td>-52.233</td>
+<td>Brazil</td>
+<td>2010</td>
+<td>5</td>
+<td>28.27</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">16227</td>
+<td>MASINDI</td>
+<td>1.683</td>
+<td>31.717</td>
+<td>Uganda</td>
+<td>2011</td>
+<td>8</td>
+<td>21.98</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">16228</td>
+<td>MASINDI</td>
+<td>1.683</td>
+<td>31.717</td>
+<td>Uganda</td>
+<td>2011</td>
+<td>9</td>
+<td>22.09</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">16229</td>
+<td>MASINDI</td>
+<td>1.683</td>
+<td>31.717</td>
+<td>Uganda</td>
+<td>2011</td>
+<td>10</td>
+<td>23.01</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">16230</td>
+<td>MASINDI</td>
+<td>1.683</td>
+<td>31.717</td>
+<td>Uganda</td>
+<td>2011</td>
+<td>11</td>
+<td>23.29</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">16231</td>
+<td>MASINDI</td>
+<td>1.683</td>
+<td>31.717</td>
+<td>Uganda</td>
+<td>2011</td>
+<td>12</td>
+<td>24.50</td>
+</tr>
+</tbody>
+</table>
+
+<p>16232 rows × 7 columns</p>
+</div>
+</div>
+</div>
+<p>The <code>temperature_box_plot</code> function below addresses how the average temperature of countries on the equator change year to year. I made sure that the function uses the same station for every year such that the data is not unevenly weighted. The plot which this function produces is important because we can see if our temperature is rising or lowering as time goes on. And as we can see from the figure below, there is a slight gradual increase in the boxplot medians of Brazil, providing visual evidence that temperatures are increasing for equator countries.</p>
+<div id="6f6748ba" class="cell" data-execution_count="13">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>inspect.getsource(temperature_box_plot)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="13">
+<pre><code>'def temperature_box_plot(db_file, country, year_begin, year_end, **kwargs):\n    """\n    Construct boxplot of yearly average temperatures of specified equator country \n    \n    Args:\n    country: desired country to display \n    year_begin: desired start year \n    year_end: desired end year \n    \n    Return:\n    px.box plot of yearly average temperatures of specified equator country\n    """\n    #call SQL query for just equator countries\n    df = query_equator(db_file, year_begin, year_end)\n    #subset only on country parameter given\n    df = df[df.Country == country]\n    #calculate mean temperature for each station\'s year\n    new = df.groupby(["NAME", "Year"])["Temp"].aggregate(np.mean)\n    #get the amount of observations per Name and Year \n    test = df.groupby(["NAME", "Year"]).size()\n    test = test.reset_index()\n    #make sure that the name and year have at least year_end - year_begin + 1 observations such that our boxplot looks full\n    names = test.groupby(["NAME"]).size() &gt;= year_end - year_begin + 1 \n    names = names[names].index\n    plot_df = pd.DataFrame(new)\n    plot_df = plot_df.reset_index()\n    plot_df = plot_df[plot_df.NAME.isin(names)]\n    #create boxplot off of created dataframe\n    fig = px.box(df,\n                 x = "Country",\n                 y = "Temp",\n                 color = "Year",\n                 title = f"Boxplots of {country}\'s Average Temperature by Year from {year_begin} to {year_end}",\n                 category_orders={"Year": [ix for ix in range(year_begin, year_end)]},\n                 **kwargs\n                )\n    return fig\n'</code></pre>
+</div>
+</div>
+<div id="09237079" class="cell" data-execution_count="14">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>fig <span class="op">=</span> temperature_box_plot(db_file, <span class="st">"Brazil"</span>, <span class="dv">1980</span>, <span class="dv">2020</span>)</span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>fig.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<iframe scrolling="no" width="100%" height="545px" src="iframe_figures/figure_14.html" frameborder="0" allowfullscreen=""></iframe>
+</div>
+</div>
+<p>I constructed the <code>temperature_lineplot_equator</code> function to display a lineplot of how the temperature changes over time in each month, and each colored line on the lineplot represents a different station. I felt this was important because like the boxplot it was another way to visualize how there is an increase in temperature in equator countries. For instance, as we can see below the Average Temperature of Station in Indonesia from 1985 to 2020 increased for all 4 stations plotted.</p>
+<div id="5de0e8f7" class="cell" data-execution_count="15">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>inspect.getsource(temperature_lineplot_equator)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="15">
+<pre><code>'def temperature_lineplot_equator(db_file, year_begin, year_end, country, **kwargs):\n    """\n    Construct lineplot of yearly average temperatures of specified equator country in month\n    \n    Args:\n    country: desired country to display \n    year_begin: desired start year \n    year_end: desired end year \n    month: specific month of year\n    **kwargs: keyword arguments for lineplot\n    \n    Return:\n    px.line plot of yearly average temperatures of specified equator country\n    """\n    import calendar \n    #call the SQL query for just equator countries\n    df = query_equator(db_file, year_begin, year_end)\n    #create date variable given year and month\n    df["Date"] = pd.to_datetime(df["Year"].astype(str) + "-" + df["Month"].astype(str))\n    #subset on country parameter\n    df = df[df.Country == country]\n    #calculate mean for each station\'s year and month\n    new = df.groupby(["NAME", "Year", "Month"])["Temp"].aggregate(np.mean)\n    #get the number of observations per station year and month\n    test = df.groupby(["NAME", "Year", "Month"]).size()\n    test = test.reset_index()\n    #make sure minimum observations are year_end - year_begin * 10 -5 such that our line plots are full\n    names = test.groupby(["NAME"]).size() &gt;= (year_end - year_begin)*10 - 5  \n    names = names[names].index\n    plot_df = pd.DataFrame(new)\n    plot_df = plot_df.reset_index()\n    plot_df = plot_df[plot_df.NAME.isin(names)]\n    #create lineplot based upon year and temperature and month face meaning we should get 12 different line plots\n    fig = px.line(data_frame = plot_df,\n                  x = "Year",\n                  y = "Temp",\n                  color = "NAME",\n                  facet_row="Month",\n                  title = (f"""Average Temperature of Station in {country} &lt;br&gt;\n                           by Year from {year_begin} to {year_end}"""),\n                  height = 5000,\n                  category_orders={"Month": [1,2,3,4,5,6,7,8,9,10,11,12]}\n                  )\n    return(fig)\n'</code></pre>
+</div>
+</div>
+<div id="47339b18" class="cell" data-execution_count="18">
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>plot <span class="op">=</span> temperature_lineplot_equator(db_file, <span class="dv">1985</span>, <span class="dv">2020</span>, <span class="st">"Indonesia"</span>)</span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>plot.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<iframe scrolling="no" width="100%" height="5020" src="iframe_figures/figure_18.html" frameborder="0" allowfullscreen=""></iframe>
+</div>
+</div>
+</section>
+<section id="concluding-remarks" class="level1">
+<h1>5. Concluding Remarks</h1>
+<p>As we can see from the query functions and graphics constructed, there is overwhelming evidence for global warming. The mapbox plot, boxplot, and line plots all show that there is a majority increase in temperature, and this conclusion was able to be realized because the visualizations helped to easily explain the data.</p>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      return note.innerHTML;
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>
